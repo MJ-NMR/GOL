@@ -2,6 +2,14 @@ package theGameOfLife
 
 type State [][]bool
 
+func CreateState(rows, cols uint) State {
+	st := make([][]bool, rows)
+	for r := range rows {
+		st[r] = make([]bool, cols)
+	}
+	return State(st)
+}
+
 var directions = [][]int{
 	{0,1},
 	{1,1},
@@ -37,6 +45,7 @@ func PlayRound(st State) State {
 	}
 	return st
 }
+
 
 func countNeigbours(st State, x, y int) (count int ) {
 	for _, dir := range directions {
