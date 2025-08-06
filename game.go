@@ -1,4 +1,4 @@
-package thegameoflife
+package theGameOfLife
 
 type State [][]bool
 
