@@ -55,10 +55,10 @@ func PlayRound(st State) State {
 func PlayRoundsChan(st State) chan State {
 	ch := make(chan State)
 	go func() {
-		ch <- st
+		courentState := st
 		for {
-			st := PlayRound(st)
-			ch <- st
+			ch <- courentState
+			courentState = PlayRound(courentState)
 		}
 	}()
 	return ch
