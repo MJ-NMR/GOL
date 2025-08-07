@@ -9,6 +9,16 @@ func (st State) InBounds(y, x int) bool  {
 	return true
 }
 
+func StateExample() State {
+	st := CreateState(60, 30)
+	st[18][15] = true
+	st[19][15] = true
+	st[19][14] = true
+	st[20][15] = true
+	st[20][16] = true
+	return st
+}
+
 func CreateState(rows, cols uint) State {
 	st := make([][]bool, rows)
 	for r := range rows {
