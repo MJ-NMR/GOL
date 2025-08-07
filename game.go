@@ -46,6 +46,17 @@ func PlayRound(st State) State {
 	return st
 }
 
+func PlayRoundsChan(st State) chan State {
+	ch := make(chan State)
+	go func() {
+		for {
+			st := PlayRound(st)
+			ch <- st
+		}
+	}()
+	return ch
+}
+
 
 func countNeigbours(st State, x, y int) (count int ) {
 	for _, dir := range directions {
