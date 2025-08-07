@@ -36,16 +36,12 @@ func PlayRound(st State) State {
 	for y, row := range st {
 		for x := range row{
 			ncount := countNeigbours(st, x, y)
-			if ncount < 2 {
+			if ncount < 2 || ncount > 3 {
 				st[y][x] = false
 				continue
 			}
 			if ncount == 3 {
 				st[x][y] = true
-				continue
-			}
-			if ncount > 3 {
-				st[y][x] = false
 				continue
 			}
 		}
