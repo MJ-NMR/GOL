@@ -56,8 +56,9 @@ func PlayRound(st State) State {
 func PlayRoundsChan(st State) chan State {
 	ch := make(chan State)
 	go func() {
+		ch <- st
 		for {
-			st := PlayRound(st)
+			st = PlayRound(st)
 			ch <- st
 		}
 	}()
