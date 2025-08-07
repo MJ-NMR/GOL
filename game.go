@@ -2,6 +2,13 @@ package theGameOfLife
 
 type State [][]bool
 
+func (st State) InBounds(y, x int) bool  {
+	if x < len(st[0]) || x > len(st[0]) || y < len(st) || y > len(st) {
+		return false
+	}
+	return true
+}
+
 func CreateState(rows, cols uint) State {
 	st := make([][]bool, rows)
 	for r := range rows {
@@ -62,6 +69,9 @@ func countNeigbours(st State, x, y int) (count int ) {
 	for _, dir := range directions {
 		ny := y + dir[0]
 		nx := x + dir[1]
+		if !st.InBounds(y, x){
+			continue
+		}
 		if st[ny][nx] {
 			count++
 		}
