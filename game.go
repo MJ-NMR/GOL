@@ -1,4 +1,4 @@
-package theGameOfLife
+package GOL
 
 type State [][]bool
 
